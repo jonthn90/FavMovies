@@ -11,8 +11,8 @@ object Libs {
      * https://github.com/Kotlin/kotlinx.coroutines
      */
     const val kotlinx_coroutines_android: String =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
-                Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
     /**
      * https://github.com/Kotlin/kotlinx.coroutines
@@ -24,28 +24,46 @@ object Libs {
      * https://github.com/Kotlin/kotlinx.coroutines
      */
     const val kotlinx_coroutines_play_services: String =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:" +
-                Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
+    const val databinding_adapters: String = "androidx.databinding:databinding-adapters:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio
+     */
+    const val databinding_common: String = "androidx.databinding:databinding-common:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio
+     */
+    const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
+            Versions.androidx_databinding
+
+    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
+            Versions.androidx_databinding
 
     /**
      * https://kotlinlang.org/
      */
     const val kotlin_android_extensions: String =
-        "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
      */
     const val kotlin_android_extensions_runtime: String =
-        "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
-                Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
+            Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
      */
     const val kotlin_annotation_processing_gradle: String =
-        "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
-                Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
@@ -89,6 +107,21 @@ object Libs {
     const val lifecycle_viewmodel_ktx: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:" +
             Versions.androidx_lifecycle
 
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val room_compiler: String = "androidx.room:room-compiler:" + Versions.androidx_room
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val room_ktx: String = "androidx.room:room-ktx:" + Versions.androidx_room
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val room_runtime: String = "androidx.room:room-runtime:" + Versions.androidx_room
+
     const val koin_android: String = "org.koin:koin-android:" + Versions.org_koin
 
     const val koin_androidx_ext: String = "org.koin:koin-androidx-ext:" + Versions.org_koin
@@ -121,16 +154,16 @@ object Libs {
     const val junit_junit: String = "junit:junit:" + Versions.junit_junit
 
     const val de_fayard_buildsrcversions_gradle_plugin: String =
-        "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
-                Versions.de_fayard_buildsrcversions_gradle_plugin
+            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
+            Versions.de_fayard_buildsrcversions_gradle_plugin
 
     const val firebase_ml_vision_barcode_model: String =
-        "com.google.firebase:firebase-ml-vision-barcode-model:" +
-                Versions.firebase_ml_vision_barcode_model
+            "com.google.firebase:firebase-ml-vision-barcode-model:" +
+            Versions.firebase_ml_vision_barcode_model
 
     const val firebase_crashlytics_gradle: String =
-        "com.google.firebase:firebase-crashlytics-gradle:" +
-                Versions.firebase_crashlytics_gradle
+            "com.google.firebase:firebase-crashlytics-gradle:" +
+            Versions.firebase_crashlytics_gradle
 
     const val firebase_firestore_ktx: String = "com.google.firebase:firebase-firestore-ktx:" +
             Versions.firebase_firestore_ktx
@@ -144,6 +177,12 @@ object Libs {
     const val firebase_storage_ktx: String = "com.google.firebase:firebase-storage-ktx:" +
             Versions.firebase_storage_ktx
 
+    /**
+     * https://github.com/stealthcopter/AndroidNetworkTools
+     */
+    const val androidnetworktools: String = "com.github.stealthcopter:AndroidNetworkTools:" +
+            Versions.androidnetworktools
+
     const val firebase_analytics: String = "com.google.firebase:firebase-analytics:" +
             Versions.firebase_analytics
 
@@ -154,10 +193,22 @@ object Libs {
             Versions.firebase_ml_vision
 
     /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
+    const val legacy_support_v4: String = "androidx.legacy:legacy-support-v4:" +
+            Versions.legacy_support_v4
+
+    /**
      * http://tools.android.com
      */
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
+
+    /**
+     * https://github.com/square/retrofit/
+     */
+    const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
+            Versions.converter_moshi
 
     const val google_services: String = "com.google.gms:google-services:" + Versions.google_services
 
@@ -185,9 +236,24 @@ object Libs {
     const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
 
     /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
+    const val material: String = "com.google.android.material:material:" + Versions.material
+
+    /**
+     * https://github.com/square/retrofit/
+     */
+    const val retrofit: String = "com.squareup.retrofit2:retrofit:" + Versions.retrofit
+
+    /**
      * https://github.com/facebook/fresco
      */
     const val fresco: String = "com.facebook.fresco:fresco:" + Versions.fresco
+
+    /**
+     * https://github.com/airbnb/lottie-android
+     */
+    const val lottie: String = "com.airbnb.android:lottie:" + Versions.lottie
 
     /**
      * https://github.com/JakeWharton/timber

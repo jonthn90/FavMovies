@@ -1,7 +1,8 @@
-package xyz.jonthn.favmovies
+package xyz.jonthn.favmovies.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import xyz.jonthn.favmovies.R
 
 class MainActivity : AppCompatActivity() {
 

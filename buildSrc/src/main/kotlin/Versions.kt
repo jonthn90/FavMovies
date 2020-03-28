@@ -13,13 +13,17 @@ import org.gradle.plugin.use.PluginDependencySpec
  */
 object Versions {
     const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.5"
-    // available: "1.3.5-1.4-M1-release-99"
+             // available: "1.3.5-1.4-M1-release-99"
+
+    const val androidx_databinding: String = "3.6.1"
 
     const val org_jetbrains_kotlin: String = "1.3.71"
 
     const val androidx_navigation: String = "2.3.0-alpha04"
 
     const val androidx_lifecycle: String = "2.2.0"
+
+    const val androidx_room: String = "2.2.5"
 
     const val org_koin: String = "2.1.5"
 
@@ -43,13 +47,19 @@ object Versions {
 
     const val firebase_storage_ktx: String = "19.1.1"
 
+    const val androidnetworktools: String = "0.4.5.2"
+
     const val firebase_analytics: String = "17.2.3"
 
     const val firebase_messaging: String = "20.1.3"
 
     const val firebase_ml_vision: String = "24.0.1"
 
+    const val legacy_support_v4: String = "1.0.0"
+
     const val constraintlayout: String = "1.1.3"
+
+    const val converter_moshi: String = "2.8.1" // available: "2.8.1"
 
     const val google_services: String = "4.3.3"
 
@@ -63,7 +73,13 @@ object Versions {
 
     const val core_ktx: String = "1.2.0"
 
-    const val fresco: String = "2.1.0"
+    const val material: String = "1.2.0-alpha05"
+
+    const val retrofit: String = "2.8.1"
+
+    const val fresco: String = "2.2.0" // available: "2.2.0"
+
+    const val lottie: String = "3.4.0"
 
     const val timber: String = "4.7.1"
 
@@ -83,4 +99,4 @@ object Versions {
  */
 val PluginDependenciesSpec.buildSrcVersions: PluginDependencySpec
     inline get() =
-        id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)
+            id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)

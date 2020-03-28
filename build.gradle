@@ -4,7 +4,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url "https://jitpack.io"
+        }
     }
     dependencies {
         classpath Libs.com_android_tools_build_gradle
@@ -15,7 +17,6 @@ buildscript {
     }
 }
 
-
 plugins {
     id("de.fayard.buildSrcVersions") version "0.7.0"
 }
@@ -24,7 +25,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 
