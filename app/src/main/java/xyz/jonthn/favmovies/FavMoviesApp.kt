@@ -3,7 +3,11 @@ package xyz.jonthn.favmovies
 import android.app.Application
 import android.content.Context
 import com.facebook.drawee.backends.pipeline.Fresco
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import timber.log.Timber
+import xyz.jonthn.favmovies.utils.appModule
 
 class FavMoviesApp: Application() {
 
@@ -17,6 +21,19 @@ class FavMoviesApp: Application() {
 
         appContext = this.applicationContext
         favMoviesApp = this
+
+        /**
+         * Koin DI init
+         */
+        startKoin {
+            androidLogger()
+            androidContext(this@FavMoviesApp)
+            modules(
+                listOf(
+                    appModule
+                )
+            )
+        }
 
         /**
          * Timber init config

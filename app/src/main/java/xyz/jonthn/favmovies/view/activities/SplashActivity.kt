@@ -9,7 +9,7 @@ import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.ActivitySplashBinding
 
 /**
- * This activity just have the porpouse to present an animation as splash screen.
+ * This activity just have the purpose to present an animation as splash screen.
  * Also this activity could be use to made a login process
  */
 class SplashActivity : AppCompatActivity() {
@@ -22,30 +22,30 @@ class SplashActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
 
         intentToMainActivity()
-
-        //setupAnimation()
+        //setAnimation()
     }
 
     /**
      * Use Lottie Lib to implement ligth and beautiful animations
      * Check https://github.com/airbnb/lottie-android
      */
-    private fun setupAnimation() {
-        binding.animationViewSplash.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator) {}
+    private fun setAnimation() {
 
-            override fun onAnimationEnd(animation: Animator) {
-                intentToMainActivity()
-            }
+        binding.animationViewSplash.apply {
 
-            override fun onAnimationCancel(animation: Animator) {}
-            override fun onAnimationRepeat(animation: Animator) {}
-        })
-    }
+            setAnimation(R.raw.splash)
 
-    override fun onStart() {
-        super.onStart()
-        binding.animationViewSplash.setAnimation(R.raw.splash)
+            addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {}
+
+                override fun onAnimationEnd(animation: Animator) {
+                    intentToMainActivity()
+                }
+
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
+            })
+        }
     }
 
     /**
