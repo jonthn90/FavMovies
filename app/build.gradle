@@ -98,6 +98,8 @@ dependencies {
 
     implementation(Libs.retrofit)
     implementation(Libs.converter_moshi)
+    implementation "com.squareup.okhttp3:logging-interceptor:4.4.1"
+
 
     implementation(Libs.room_runtime)
     implementation(Libs.room_ktx)
