@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="TextSplash" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">50sp</item>
+        <item name="fontFamily">@font/fugaz_one</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/amiko_bold</item>
+    </style>
+
 </resources>

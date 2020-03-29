@@ -49,11 +49,12 @@ dependencies {
     implementation(Libs.core_ktx)
     implementation(Libs.constraintlayout)
 
-    implementation (Libs.material)
+    implementation(Libs.material)
 
-    implementation (Libs.navigation_fragment_ktx)
-    implementation (Libs.navigation_ui_ktx)
-    
+    implementation(Libs.navigation_fragment_ktx)
+    implementation(Libs.navigation_ui_ktx)
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation(Libs.junit_junit)
     androidTestImplementation(Libs.androidx_test_ext_junit)
     androidTestImplementation(Libs.espresso_core)
@@ -93,14 +94,14 @@ dependencies {
     implementation(Libs.koin_androidx_fragment)
     implementation(Libs.koin_androidx_ext)
 
-    implementation (Libs.lottie)
+    implementation(Libs.lottie)
 
-    implementation (Libs.retrofit)
-    implementation (Libs.converter_moshi)
+    implementation(Libs.retrofit)
+    implementation(Libs.converter_moshi)
 
-    implementation (Libs.room_runtime)
-    implementation (Libs.room_ktx)
-    kapt (Libs.room_compiler)
+    implementation(Libs.room_runtime)
+    implementation(Libs.room_ktx)
+    kapt(Libs.room_compiler)
 
-    implementation (Libs.androidnetworktools)
+    implementation(Libs.androidnetworktools)
 }

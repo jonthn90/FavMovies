@@ -59,7 +59,7 @@ object Versions {
 
     const val constraintlayout: String = "1.1.3"
 
-    const val converter_moshi: String = "2.8.1" // available: "2.8.1"
+    const val converter_moshi: String = "2.8.1"
 
     const val google_services: String = "4.3.3"
 
@@ -77,7 +77,7 @@ object Versions {
 
     const val retrofit: String = "2.8.1"
 
-    const val fresco: String = "2.2.0" // available: "2.2.0"
+    const val fresco: String = "2.2.0"
 
     const val lottie: String = "3.4.0"
 
