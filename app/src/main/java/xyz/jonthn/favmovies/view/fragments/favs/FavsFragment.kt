@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.FragmentFavsBinding
 import xyz.jonthn.favmovies.viewmodel.FavsViewModel
@@ -54,8 +52,6 @@ class FavsFragment : Fragment() {
                 binding.layoutEmpty.visibility = View.VISIBLE
             else
                 binding.layoutEmpty.visibility = View.GONE
-
-
         })
     }
 

@@ -31,6 +31,10 @@ class MoviesRepostoryImpl(private val requestMovies: RequestMovies, private val 
         moviesDAO.deleteFavMovie(id)
     }
 
+    override suspend fun getMovieFromId(id: Int) : Movie? {
+        return moviesDAO.getMovieFromId(id)
+    }
+
     override fun getFavMoviesLive(): LiveData<List<Movie>> {
         return moviesDAO.getAllLive()
     }

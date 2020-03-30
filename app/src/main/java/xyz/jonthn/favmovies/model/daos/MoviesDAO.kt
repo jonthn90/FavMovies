@@ -26,5 +26,5 @@ interface MoviesDAO {
     suspend fun nukeTable()
 
     @Query("SELECT * FROM movie WHERE id LIKE :id")
-    suspend fun getItemFromID(id: Int) : Movie
+    suspend fun getMovieFromId(id: Int) : Movie?
 }

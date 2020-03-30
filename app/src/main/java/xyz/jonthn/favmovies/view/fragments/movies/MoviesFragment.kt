@@ -29,9 +29,14 @@ class MoviesFragment : Fragment() {
     }
 
     private val moviesAdapter by lazy {
-        MoviesAdapter{
+        MoviesAdapter {
             Timber.d("+++ Movie Click: ${it.title}")
-            moviesViewModel.insertMovie(it)
+
+            if (it.isFav) {
+                moviesViewModel.deleteFavMovie(it.id)
+            } else {
+                moviesViewModel.insertMovie(it)
+            }
         }
     }
 

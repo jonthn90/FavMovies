@@ -20,5 +20,5 @@ data class Movie(
     @ColumnInfo(name = "video") val video: Boolean,
     @ColumnInfo(name = "vote_average") val vote_average: Double,
     @ColumnInfo(name = "vote_count") val vote_count: Int,
-    @ColumnInfo(name = "is_fav") var isFav: Boolean
+    @ColumnInfo(name = "is_fav", defaultValue = "false") var isFav: Boolean
 )

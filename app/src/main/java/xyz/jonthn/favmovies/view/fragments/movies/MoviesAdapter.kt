@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder
 import kotlinx.android.synthetic.main.item_movie.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
 import xyz.jonthn.favmovies.FavMoviesApp
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.model.data.Movie
@@ -34,11 +36,27 @@ class MoviesAdapter(private val favListener: (Movie) -> Unit) : PagedListAdapter
             val uri = Uri.parse("https://image.tmdb.org/t/p/w500/${movie.poster_path}")
             binding.imagePoster.setImageURI(uri, null)
 
+            var resourceFav = R.drawable.ic_oscar_outline
+
+            if (movie.isFav){
+                resourceFav = R.drawable.ic_oscar_fill
+            }
+
+            val hierarchy = GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
+                .setPlaceholderImage(resourceFav)
+                .build()
+            binding.imageFavIcon.hierarchy = hierarchy
+
             binding.imageFavIcon.setOnClickListener {
 
-                val hierarchy =
-                    GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
-                        .setPlaceholderImage(R.drawable.ic_oscar_fill)
+                var resourceFav = R.drawable.ic_oscar_fill
+
+                if (movie.isFav){
+                    resourceFav = R.drawable.ic_oscar_outline
+                }
+
+                val hierarchy = GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
+                        .setPlaceholderImage(resourceFav)
                         .build()
                 binding.imageFavIcon.hierarchy = hierarchy
 

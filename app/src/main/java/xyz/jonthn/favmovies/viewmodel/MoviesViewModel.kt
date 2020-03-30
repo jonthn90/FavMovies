@@ -19,7 +19,8 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
     init {
         val config = PagedList.Config.Builder()
             .setPageSize(20)
-            .setEnablePlaceholders(false)
+            .setPrefetchDistance(8)
+            .setEnablePlaceholders(true)
             .build()
         moviesLiveData = initializedPagedListBuilder(config).build()
     }
@@ -30,9 +31,10 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
 
         val dataSourceFactory = object : DataSource.Factory<Int, Movie>() {
             override fun create(): DataSource<Int, Movie> {
-                return MoviesDataSource(viewModelScope)
+                return MoviesDataSource(viewModelScope, moviesRepository)
             }
         }
+
         return LivePagedListBuilder(dataSourceFactory, config)
     }
 
@@ -47,6 +49,12 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
             val favMovies = moviesRepository.getFavMovies()
 
             Timber.d("+++ FavMovies[${favMovies.size}] ${favMovies}")
+        }
+    }
+
+    fun deleteFavMovie(id: Int) {
+        viewModelScope.launch {
+            moviesRepository.deleteFavMovie(id)
         }
     }
 

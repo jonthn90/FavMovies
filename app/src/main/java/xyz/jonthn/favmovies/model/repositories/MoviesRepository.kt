@@ -13,5 +13,7 @@ interface MoviesRepository {
 
     suspend fun deleteFavMovie(id: Int)
 
+    suspend fun getMovieFromId(id: Int): Movie?
+
     fun getFavMoviesLive(): LiveData<List<Movie>>
 }

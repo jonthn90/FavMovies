@@ -6,10 +6,12 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import timber.log.Timber
 import xyz.jonthn.favmovies.model.apis.RequestMovies
 import xyz.jonthn.favmovies.model.data.Movie
+import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 
-class MoviesDataSource(private val scope: CoroutineScope) :
+class MoviesDataSource(private val scope: CoroutineScope, val moviesRepository: MoviesRepository) :
     PageKeyedDataSource<Int, Movie>(),
     KoinComponent {
 
@@ -26,15 +28,19 @@ class MoviesDataSource(private val scope: CoroutineScope) :
 
             response.let {
 
-                val movies = response!!.results
+                var movies = response!!.results
+
+                movies.forEachIndexed() { i, movie ->
+                    if (moviesRepository.getMovieFromId(movie.id) != null) {
+                        movies[i].isFav = true
+                    }
+                }
 
                 movies.let {
                     callback.onResult(movies, null, response.page + 1)
                 }
             }
-
         }
-
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
@@ -46,6 +52,12 @@ class MoviesDataSource(private val scope: CoroutineScope) :
             response.let {
 
                 val movies = response!!.results
+
+                movies.forEachIndexed() { i, movie ->
+                    if (moviesRepository.getMovieFromId(movie.id) != null) {
+                        movies[i].isFav = true
+                    }
+                }
 
                 movies.let {
                     callback.onResult(movies, response.page + 1)
