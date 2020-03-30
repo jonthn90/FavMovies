@@ -9,7 +9,7 @@ import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 import xyz.jonthn.favmovies.model.repositories.MoviesRepostoryImpl
 import xyz.jonthn.favmovies.viewmodel.ViewModelFactory
 
-val databaseModule = module{
+val databaseModule = module {
     single { AppDatabase.getDatabase(get()) }
     single { get<AppDatabase>().moviesDAO() }
 }

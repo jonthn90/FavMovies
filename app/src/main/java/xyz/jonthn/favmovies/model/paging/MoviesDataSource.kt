@@ -6,7 +6,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import timber.log.Timber
 import xyz.jonthn.favmovies.model.apis.RequestMovies
 import xyz.jonthn.favmovies.model.data.Movie
 import xyz.jonthn.favmovies.model.repositories.MoviesRepository
@@ -68,10 +67,5 @@ class MoviesDataSource(private val scope: CoroutineScope, val moviesRepository: 
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
 
-    }
-
-    override fun invalidate() {
-        super.invalidate()
-        scope.cancel()
     }
 }

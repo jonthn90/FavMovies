@@ -17,7 +17,7 @@ import xyz.jonthn.favmovies.FavMoviesApp
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.model.data.Movie
 
-class MoviesAdapter(private val favListener: (Movie) -> Unit) : PagedListAdapter<Movie, MoviesAdapter.ViewHolder>(ITEM_COMPARATOR) {
+class MoviesAdapter(private val favListener: (Movie, Int) -> Unit) : PagedListAdapter<Movie, MoviesAdapter.ViewHolder>(ITEM_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -25,13 +25,13 @@ class MoviesAdapter(private val favListener: (Movie) -> Unit) : PagedListAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bindMovie(it, favListener)
+            holder.bindMovie(getItem(position)!!, position, favListener)
         }
     }
 
     class ViewHolder(val binding: View) : RecyclerView.ViewHolder(binding) {
 
-        fun bindMovie(movie: Movie, favListener: (Movie) -> Unit) {
+        fun bindMovie(movie: Movie, position: Int, favListener: (Movie, Int) -> Unit) {
             binding.textMovieTitle.text = movie.title
             val uri = Uri.parse("https://image.tmdb.org/t/p/w500/${movie.poster_path}")
             binding.imagePoster.setImageURI(uri, null)
@@ -60,7 +60,7 @@ class MoviesAdapter(private val favListener: (Movie) -> Unit) : PagedListAdapter
                         .build()
                 binding.imageFavIcon.hierarchy = hierarchy
 
-                favListener(movie)
+                favListener(movie,position)
             }
         }
 

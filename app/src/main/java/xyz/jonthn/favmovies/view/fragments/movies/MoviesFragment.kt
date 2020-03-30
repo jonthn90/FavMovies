@@ -29,13 +29,13 @@ class MoviesFragment : Fragment() {
     }
 
     private val moviesAdapter by lazy {
-        MoviesAdapter {
-            Timber.d("+++ Movie Click: ${it.title}")
+        MoviesAdapter { movie, position ->
+            Timber.d("+++ Movie Click: ${movie.title}")
 
-            if (it.isFav) {
-                moviesViewModel.deleteFavMovie(it.id)
+            if (movie.isFav) {
+                moviesViewModel.deleteFavMovie(movie.id)
             } else {
-                moviesViewModel.insertMovie(it)
+                moviesViewModel.insertMovie(movie)
             }
         }
     }
@@ -62,9 +62,23 @@ class MoviesFragment : Fragment() {
         })
     }
 
+    fun updateAdapter(positon: Int){
+        moviesAdapter.notifyItemChanged(positon)
+    }
+
     private fun initializeList() {
         binding.recyclerMovies.apply {
             adapter = moviesAdapter
+            layoutManager = GridLayoutManager(requireContext(),2)
         }
+    }
+
+    private fun invalidateAdapter() {
+        binding.recyclerMovies.apply {
+            adapter = null
+            layoutManager = null
+        }
+
+        moviesAdapter.notifyDataSetChanged()
     }
 }

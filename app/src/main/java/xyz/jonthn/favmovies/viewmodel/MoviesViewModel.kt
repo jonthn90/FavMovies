@@ -3,40 +3,28 @@ package xyz.jonthn.favmovies.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.DataSource
-import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import xyz.jonthn.favmovies.model.data.Movie
-import xyz.jonthn.favmovies.model.paging.MoviesDataSource
+import xyz.jonthn.favmovies.model.paging.MoviesDataSourceFactory
 import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 
 class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-    var moviesLiveData: LiveData<PagedList<Movie>>
+    private val dataSourceFactory = MoviesDataSourceFactory(viewModelScope, moviesRepository)
 
-    init {
-        val config = PagedList.Config.Builder()
-            .setPageSize(20)
-            .setPrefetchDistance(8)
-            .setEnablePlaceholders(true)
-            .build()
-        moviesLiveData = initializedPagedListBuilder(config).build()
+    private val moviesLiveData: LiveData<PagedList<Movie>> =
+        dataSourceFactory.toLiveData(
+            pageSize = 20
+        )
+
+    fun invalidateDataSource() {
+        dataSourceFactory.sourceLiveData.value?.invalidate()
     }
 
     fun getMovies(): LiveData<PagedList<Movie>> = moviesLiveData
-
-    private fun initializedPagedListBuilder(config: PagedList.Config): LivePagedListBuilder<Int, Movie> {
-
-        val dataSourceFactory = object : DataSource.Factory<Int, Movie>() {
-            override fun create(): DataSource<Int, Movie> {
-                return MoviesDataSource(viewModelScope, moviesRepository)
-            }
-        }
-
-        return LivePagedListBuilder(dataSourceFactory, config)
-    }
 
     fun insertMovie(movie: Movie) {
         viewModelScope.launch {
@@ -55,6 +43,7 @@ class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewMode
     fun deleteFavMovie(id: Int) {
         viewModelScope.launch {
             moviesRepository.deleteFavMovie(id)
+            invalidateDataSource()
         }
     }
 
