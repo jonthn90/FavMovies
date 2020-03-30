@@ -2,11 +2,11 @@
 
 Observaciones especificas:
 
-- Se consumio la API https://developers.themoviedb.org/3/movies/get-top-rated-movies.+
+- Se consumio la API https://developers.themoviedb.org/3/movies/get-top-rated-movies
 
-- Se hizo el paginado con Paging Arch de Jetpack, el cual no permite hacer update individuales de los items, por lo cual al eliminar desde la pestaña de Movies se tiene que recargar toda la lista para validar contra lo guardado en la BD de favoritas.
+- Se hizo el paginado con Paging Arch de Jetpack, el cual no permite hacer update individuales de los items, por lo cual al eliminar desde la pestaña de Movies una favorita, se tiene que recargar toda la lista para validar contra lo guardado en la BD de favoritas.
 
-- Debido a la logica se vio que era mejor usar un solo ViewModel del Main Activity, sin embargo cada seccion (Movies y Fav Movies), esta lista con su ViewModel ligado a su NavGraph.
+- Debido a la logica, se vio que era mejor usar un solo ViewModel del Main Activity, sin embargo cada seccion (Movies y Fav Movies), esta lista con su ViewModel ligado a su NavGraph.
 
 - Por mejorar: no esta totalmente optimizado manejar los escenarios sin internet, faltan algunos mensajes de alerta.Botones para reintentar recarga.
 
