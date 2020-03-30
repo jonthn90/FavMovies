@@ -7,10 +7,11 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
+import xyz.jonthn.favmovies.utils.databaseModule
 import xyz.jonthn.favmovies.utils.moviesModule
 import xyz.jonthn.favmovies.utils.viewModelsModule
 
-class FavMoviesApp: Application() {
+class FavMoviesApp : Application() {
 
     companion object {
         var appContext: Context? = null
@@ -31,8 +32,9 @@ class FavMoviesApp: Application() {
             androidContext(this@FavMoviesApp)
             modules(
                 listOf(
-                    viewModelsModule,
-                    moviesModule
+                    databaseModule,
+                    moviesModule,
+                    viewModelsModule
                 )
             )
         }

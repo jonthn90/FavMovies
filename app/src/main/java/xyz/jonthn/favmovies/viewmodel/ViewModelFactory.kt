@@ -14,7 +14,7 @@ class ViewModelFactory(private val moviesRepository: MoviesRepository) : ViewMod
                 }
 
                 isAssignableFrom(FavsViewModel::class.java) -> {
-                    FavsViewModel()
+                    FavsViewModel(moviesRepository)
                 }
 
                 else -> throw IllegalArgumentException("Unknown ViewModel class you must add it") as Throwable

@@ -11,7 +11,9 @@ import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 import xyz.jonthn.favmovies.R
+import xyz.jonthn.favmovies.databinding.FragmentFavsBinding
 import xyz.jonthn.favmovies.databinding.FragmentMoviesBinding
 import xyz.jonthn.favmovies.viewmodel.MoviesViewModel
 import xyz.jonthn.favmovies.viewmodel.ViewModelFactory
@@ -26,13 +28,18 @@ class MoviesFragment : Fragment() {
         factory
     }
 
-    private val moviesAdapter = MoviesAdapter()
+    private val moviesAdapter by lazy {
+        MoviesAdapter{
+            Timber.d("+++ Movie Click: ${it.title}")
+            moviesViewModel.insertMovie(it)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movies, container, false)
+        binding = FragmentMoviesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,7 +59,6 @@ class MoviesFragment : Fragment() {
 
     private fun initializeList() {
         binding.recyclerMovies.apply {
-            layoutManager = GridLayoutManager(requireContext(),2)
             adapter = moviesAdapter
         }
     }

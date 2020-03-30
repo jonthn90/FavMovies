@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,12 +10,38 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragments.favs.FavsFragment">
+        android:background="@color/colorBackgroundFav">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <LinearLayout
+            android:id="@+id/layoutEmpty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_oscar_fill" />
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:placeholderImage="@drawable/ic_popcorn" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@string/empty_fav" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMovies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_movie" />
+
 
     </FrameLayout>
 </layout>
