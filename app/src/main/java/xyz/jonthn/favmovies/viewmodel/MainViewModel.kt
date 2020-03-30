@@ -1,6 +1,7 @@
 package xyz.jonthn.favmovies.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagedList
@@ -21,6 +22,8 @@ class MainViewModel (val moviesRepository: MoviesRepository): ViewModel() {
         )
 
     val favMoviesLiveData = moviesRepository.getFavMoviesLive()
+
+    val movieDetail = MutableLiveData<Movie>()
 
     fun invalidateDataSource() {
         dataSourceFactory.sourceLiveData.value?.invalidate()

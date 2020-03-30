@@ -1,10 +1,13 @@
 package xyz.jonthn.favmovies.model.data
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity
+@Parcelize
 data class Movie(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "adult") val adult: Boolean,
@@ -21,4 +24,4 @@ data class Movie(
     @ColumnInfo(name = "vote_average") val vote_average: Double,
     @ColumnInfo(name = "vote_count") val vote_count: Int,
     @ColumnInfo(name = "is_fav", defaultValue = "false") var isFav: Boolean
-)
+) : Parcelable

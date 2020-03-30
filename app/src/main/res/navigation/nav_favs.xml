@@ -9,5 +9,19 @@
         android:id="@+id/favsFragment"
         android:name="xyz.jonthn.favmovies.view.fragments.favs.FavsFragment"
         android:label="fragment_favs"
-        tools:layout="@layout/fragment_favs" />
+        tools:layout="@layout/fragment_favs">
+        <action
+            android:id="@+id/action_favsFragment_to_movieFragment2"
+            app:destination="@id/movieFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment2"
+        android:name="xyz.jonthn.favmovies.view.fragments.movie.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie">
+        <argument
+            android:name="movie"
+            app:argType="xyz.jonthn.favmovies.model.data.Movie"
+            app:nullable="false" />
+    </fragment>
 </navigation>

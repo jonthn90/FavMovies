@@ -2,4 +2,7 @@
     <string name="app_name">Fav Movies</string>
     <string name="movies">Movies</string>
     <string name="empty_fav">Aún no tienes alguna pelicula favorita.\n\nVe a la sección de Movies para agregar tus peliculas favoritas.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,6 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'koin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -47,14 +48,15 @@ dependencies {
     implementation(Libs.kotlin_stdlib_jdk7)
     implementation(Libs.appcompat)
     implementation(Libs.core_ktx)
-    implementation (Libs.recyclerview)
+    implementation(Libs.recyclerview)
     implementation(Libs.constraintlayout)
-    implementation (Libs.swiperefreshlayout)
+    implementation(Libs.swiperefreshlayout)
 
     implementation(Libs.material)
 
     implementation(Libs.lifecycle_viewmodel_ktx)
     implementation(Libs.lifecycle_livedata_ktx)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Libs.lifecycle_compiler)
 
     implementation(Libs.navigation_fragment_ktx)

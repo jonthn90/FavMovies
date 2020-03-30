@@ -17,7 +17,10 @@ import xyz.jonthn.favmovies.FavMoviesApp
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.model.data.Movie
 
-class MoviesAdapter(private val favListener: (Movie, Int) -> Unit) : PagedListAdapter<Movie, MoviesAdapter.ViewHolder>(ITEM_COMPARATOR) {
+class MoviesAdapter(
+    private val favListener: (Movie, Int) -> Unit,
+    private val detailListener: (Movie, Int) -> Unit
+) : PagedListAdapter<Movie, MoviesAdapter.ViewHolder>(ITEM_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -25,42 +28,53 @@ class MoviesAdapter(private val favListener: (Movie, Int) -> Unit) : PagedListAd
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bindMovie(getItem(position)!!, position, favListener)
+            holder.bindMovie(getItem(position)!!, position, favListener, detailListener)
         }
     }
 
     class ViewHolder(val binding: View) : RecyclerView.ViewHolder(binding) {
 
-        fun bindMovie(movie: Movie, position: Int, favListener: (Movie, Int) -> Unit) {
+        fun bindMovie(
+            movie: Movie,
+            position: Int,
+            favListener: (Movie, Int) -> Unit,
+            detailListener: (Movie, Int) -> Unit
+        ) {
             binding.textMovieTitle.text = movie.title
             val uri = Uri.parse("https://image.tmdb.org/t/p/w500/${movie.poster_path}")
             binding.imagePoster.setImageURI(uri, null)
 
             var resourceFav = R.drawable.ic_oscar_outline
 
-            if (movie.isFav){
+            if (movie.isFav) {
                 resourceFav = R.drawable.ic_oscar_fill
             }
 
-            val hierarchy = GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
-                .setPlaceholderImage(resourceFav)
-                .build()
+            val hierarchy =
+                GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
+                    .setPlaceholderImage(resourceFav)
+                    .build()
             binding.imageFavIcon.hierarchy = hierarchy
 
             binding.imageFavIcon.setOnClickListener {
 
                 var resourceFav = R.drawable.ic_oscar_fill
 
-                if (movie.isFav){
+                if (movie.isFav) {
                     resourceFav = R.drawable.ic_oscar_outline
                 }
 
-                val hierarchy = GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
+                val hierarchy =
+                    GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
                         .setPlaceholderImage(resourceFav)
                         .build()
                 binding.imageFavIcon.hierarchy = hierarchy
 
-                favListener(movie,position)
+                favListener(movie, position)
+            }
+
+            binding.imagePoster.setOnClickListener {
+                detailListener(movie, position)
             }
         }
 

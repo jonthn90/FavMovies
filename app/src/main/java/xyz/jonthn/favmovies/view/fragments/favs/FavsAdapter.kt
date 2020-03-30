@@ -13,7 +13,10 @@ import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.ItemMovieBinding
 import xyz.jonthn.favmovies.model.data.Movie
 
-class FavsAdapter(private val favListener: (Int) -> Unit) :
+class FavsAdapter(
+    private val favListener: (Int) -> Unit,
+    private val detailListener: (Movie) -> Unit
+) :
     RecyclerView.Adapter<FavsAdapter.ViewHolder>() {
 
     private val moviesList = AsyncListDiffer(this, ITEM_COMPARATOR)
@@ -31,17 +34,16 @@ class FavsAdapter(private val favListener: (Int) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(moviesList.currentList.get(position), favListener)
+        holder.bind(moviesList.currentList.get(position), favListener, detailListener)
     }
 
     class ViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie, favListener: (Int) -> Unit) {
+        fun bind(movie: Movie, favListener: (Int) -> Unit, detailListener: (Movie) -> Unit) {
 
             binding.textMovieTitle.text = movie.title
             val uri = Uri.parse("https://image.tmdb.org/t/p/w500/${movie.poster_path}")
             binding.imagePoster.setImageURI(uri, null)
-
 
             val hierarchy =
                 GenericDraweeHierarchyBuilder.newInstance(FavMoviesApp.appContext!!.resources)
@@ -51,6 +53,10 @@ class FavsAdapter(private val favListener: (Int) -> Unit) :
 
             binding.imageFavIcon.setOnClickListener {
                 favListener(movie.id)
+            }
+
+            binding.imagePoster.setOnClickListener {
+                detailListener(movie)
             }
         }
 
