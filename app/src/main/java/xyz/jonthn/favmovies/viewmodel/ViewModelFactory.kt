@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 
-class ViewModelFactory(private val moviesRepository: MoviesRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val moviesRepository: MoviesRepository) :
+    ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return with(modelClass) {
             when {
+
                 isAssignableFrom(MoviesViewModel::class.java) -> {
                     MoviesViewModel(moviesRepository)
                 }

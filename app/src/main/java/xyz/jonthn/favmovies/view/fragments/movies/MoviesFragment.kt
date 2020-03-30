@@ -11,10 +11,13 @@ import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.FragmentFavsBinding
 import xyz.jonthn.favmovies.databinding.FragmentMoviesBinding
+import xyz.jonthn.favmovies.viewmodel.MainViewModel
 import xyz.jonthn.favmovies.viewmodel.MoviesViewModel
 import xyz.jonthn.favmovies.viewmodel.ViewModelFactory
 
@@ -28,14 +31,16 @@ class MoviesFragment : Fragment() {
         factory
     }
 
+    private val mainViewModel: MainViewModel by sharedViewModel()
+
     private val moviesAdapter by lazy {
         MoviesAdapter { movie, position ->
             Timber.d("+++ Movie Click: ${movie.title}")
 
             if (movie.isFav) {
-                moviesViewModel.deleteFavMovie(movie.id)
+                mainViewModel.deleteFavMovie(movie.id)
             } else {
-                moviesViewModel.insertMovie(movie)
+                mainViewModel.insertMovie(movie)
             }
         }
     }
@@ -57,7 +62,7 @@ class MoviesFragment : Fragment() {
 
     private fun observeLiveData() {
         //observe live data emitted by view model
-        moviesViewModel.getMovies().observe(requireActivity(), Observer {
+        mainViewModel.getMovies().observe(requireActivity(), Observer {
             moviesAdapter.submitList(it)
         })
     }

@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.FragmentFavsBinding
 import xyz.jonthn.favmovies.viewmodel.FavsViewModel
+import xyz.jonthn.favmovies.viewmodel.MainViewModel
 import xyz.jonthn.favmovies.viewmodel.ViewModelFactory
 
 class FavsFragment : Fragment() {
@@ -23,9 +25,11 @@ class FavsFragment : Fragment() {
         factory
     }
 
+    private val mainViewModel: MainViewModel by sharedViewModel()
+
     private val favsAdapter by lazy {
         FavsAdapter {
-            favsViewModel.deleteFavMovie(it)
+            mainViewModel.deleteFavMovie(it)
         }
     }
 
@@ -45,7 +49,7 @@ class FavsFragment : Fragment() {
 
     private fun observeLiveData() {
         //observe live data emitted by view model
-        favsViewModel.getFavMovies().observe(requireActivity(), Observer {
+        mainViewModel.getFavMovies().observe(requireActivity(), Observer {
             favsAdapter.submitList(it)
 
             if (it.isNullOrEmpty())
