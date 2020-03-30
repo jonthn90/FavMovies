@@ -12,6 +12,8 @@ Observaciones especificas:
 
 - ADICIONAL: se agrego la funconalidad de si se le da clic en la pelicula se pasa a la pantala de detalle de la misma
 
+- ADICIONAL: se configuro Firebase Crashlytics y Analytics.
+
 
 Instrucciones para correr el codigo.
 
