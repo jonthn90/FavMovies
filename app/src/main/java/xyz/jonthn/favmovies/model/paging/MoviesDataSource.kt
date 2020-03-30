@@ -23,22 +23,28 @@ class MoviesDataSource(private val scope: CoroutineScope, val moviesRepository: 
 
         scope.launch {
 
-            val response = retrofit.getMovies(1).body()
+            try {
 
-            response.let {
+                val response = retrofit.getMovies(1).body()
 
-                var movies = response!!.results
+                response.let {
 
-                movies.forEachIndexed() { i, movie ->
-                    if (moviesRepository.getMovieFromId(movie.id) != null) {
-                        movies[i].isFav = true
+                    var movies = response!!.results
+
+                    movies.forEachIndexed() { i, movie ->
+                        if (moviesRepository.getMovieFromId(movie.id) != null) {
+                            movies[i].isFav = true
+                        }
+                    }
+
+                    movies.let {
+                        callback.onResult(movies, null, response.page + 1)
                     }
                 }
+            } catch (e: Exception) {
 
-                movies.let {
-                    callback.onResult(movies, null, response.page + 1)
-                }
             }
+
         }
     }
 
@@ -46,21 +52,25 @@ class MoviesDataSource(private val scope: CoroutineScope, val moviesRepository: 
 
         scope.launch {
 
-            val response = retrofit.getMovies(params.key).body()
+            try {
+                val response = retrofit.getMovies(params.key).body()
 
-            response.let {
+                response.let {
 
-                val movies = response!!.results
+                    val movies = response!!.results
 
-                movies.forEachIndexed() { i, movie ->
-                    if (moviesRepository.getMovieFromId(movie.id) != null) {
-                        movies[i].isFav = true
+                    movies.forEachIndexed() { i, movie ->
+                        if (moviesRepository.getMovieFromId(movie.id) != null) {
+                            movies[i].isFav = true
+                        }
+                    }
+
+                    movies.let {
+                        callback.onResult(movies, response.page + 1)
                     }
                 }
+            } catch (e: Exception) {
 
-                movies.let {
-                    callback.onResult(movies, response.page + 1)
-                }
             }
         }
     }

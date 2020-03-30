@@ -14,8 +14,7 @@ buildscript {
         classpath Libs.google_services
         classpath Libs.firebase_crashlytics_gradle
         classpath Libs.koin_gradle_plugin
-
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0-alpha04"
+        classpath Libs.navigation_safe_args_gradle_plugin
     }
 }
 

@@ -98,6 +98,12 @@ object Libs {
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html
      */
+    const val navigation_safe_args_gradle_plugin: String =
+            "androidx.navigation:navigation-safe-args-gradle-plugin:" + Versions.androidx_navigation
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
     const val navigation_ui_ktx: String = "androidx.navigation:navigation-ui-ktx:" +
             Versions.androidx_navigation
 

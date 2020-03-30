@@ -21,7 +21,6 @@ class SplashActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
 
-        //intentToMainActivity()
         setAnimation()
     }
 
