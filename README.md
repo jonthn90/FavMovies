@@ -19,5 +19,5 @@ Instrucciones para correr el codigo.
 
 - Opción 1: Clonar el repositorio y abrir el la carpeta principal en Android Studio. Ejecutar de forma normal, no requiere nada extra.
 
-- Opción 2: en la raiz del repositorio esta el archivo favmovies.apk, el cual se puede isntalar en un dipositivo android que se le hayan concedido permisos de instalacion de origines desconocidos.
+- Opción 2: en la raiz del repositorio esta el archivo favmovies.apk, el cual se puede instalar en un dipositivo android (Android 6.0+) que se le hayan concedido permisos de instalacion de origines desconocidos.
 
