@@ -15,6 +15,8 @@ object Versions {
     const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.5"
              // available: "1.3.5-1.4-M1-release-99"
 
+    const val com_squareup_retrofit2: String = "2.8.1"
+
     const val androidx_databinding: String = "3.6.1"
 
     const val org_jetbrains_kotlin: String = "1.3.71"
@@ -35,8 +37,6 @@ object Versions {
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
-    const val firebase_ml_vision_barcode_model: String = "16.0.2"
-
     const val firebase_crashlytics_gradle: String = "2.0.0-beta03"
 
     const val firebase_firestore_ktx: String = "21.4.1"
@@ -49,23 +49,27 @@ object Versions {
 
     const val androidnetworktools: String = "0.4.5.2"
 
+    const val logging_interceptor: String = "4.4.1"
+
     const val firebase_analytics: String = "17.2.3"
 
     const val firebase_messaging: String = "20.1.3"
 
-    const val firebase_ml_vision: String = "24.0.1"
+    const val paging_runtime_ktx: String = "2.1.2"
+
+    const val swiperefreshlayout: String = "1.0.0"
 
     const val legacy_support_v4: String = "1.0.0"
 
     const val constraintlayout: String = "1.1.3"
-
-    const val converter_moshi: String = "2.8.1"
 
     const val google_services: String = "4.3.3"
 
     const val espresso_core: String = "3.2.0"
 
     const val firebase_auth: String = "19.3.0"
+
+    const val recyclerview: String = "1.1.0"
 
     const val lint_gradle: String = "26.6.1"
 
@@ -74,8 +78,6 @@ object Versions {
     const val core_ktx: String = "1.2.0"
 
     const val material: String = "1.2.0-alpha05"
-
-    const val retrofit: String = "2.8.1"
 
     const val fresco: String = "2.2.0"
 

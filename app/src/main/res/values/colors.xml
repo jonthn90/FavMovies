@@ -7,5 +7,6 @@
 
 
     <color name="colorText">#FF424242</color>
+    <color name="colorBackground">#EFEFEF</color>
 
 </resources>

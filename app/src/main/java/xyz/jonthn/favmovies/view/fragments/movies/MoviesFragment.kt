@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.ext.android.inject
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.FragmentMoviesBinding
@@ -23,6 +26,8 @@ class MoviesFragment : Fragment() {
         factory
     }
 
+    private val moviesAdapter = MoviesAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +39,21 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moviesViewModel.getMoviesWS()
+        observeLiveData()
+        initializeList()
+    }
+
+    private fun observeLiveData() {
+        //observe live data emitted by view model
+        moviesViewModel.getMovies().observe(requireActivity(), Observer {
+            moviesAdapter.submitList(it)
+        })
+    }
+
+    private fun initializeList() {
+        binding.recyclerMovies.apply {
+            layoutManager = GridLayoutManager(requireContext(),2)
+            adapter = moviesAdapter
+        }
     }
 }

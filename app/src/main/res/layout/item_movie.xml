@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imagePoster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:actualImageScaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/textMovieTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderImage="@drawable/ic_photograms_fill"
+                app:viewAspectRatio="1.1" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imageFavIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:elevation="10dp"
+                app:actualImageScaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="@+id/imagePoster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:placeholderImage="@drawable/ic_oscar_outline" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textMovieTitle"
+                style="@style/TextMovieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="The best movie" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

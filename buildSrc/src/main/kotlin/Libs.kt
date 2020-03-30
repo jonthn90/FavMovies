@@ -27,6 +27,18 @@ object Libs {
             "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:" +
             Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
+    /**
+     * https://github.com/square/retrofit/
+     */
+    const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
+            Versions.com_squareup_retrofit2
+
+    /**
+     * https://github.com/square/retrofit/
+     */
+    const val retrofit: String = "com.squareup.retrofit2:retrofit:" +
+            Versions.com_squareup_retrofit2
+
     const val databinding_adapters: String = "androidx.databinding:databinding-adapters:" +
             Versions.androidx_databinding
 
@@ -157,10 +169,6 @@ object Libs {
             "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
             Versions.de_fayard_buildsrcversions_gradle_plugin
 
-    const val firebase_ml_vision_barcode_model: String =
-            "com.google.firebase:firebase-ml-vision-barcode-model:" +
-            Versions.firebase_ml_vision_barcode_model
-
     const val firebase_crashlytics_gradle: String =
             "com.google.firebase:firebase-crashlytics-gradle:" +
             Versions.firebase_crashlytics_gradle
@@ -183,14 +191,29 @@ object Libs {
     const val androidnetworktools: String = "com.github.stealthcopter:AndroidNetworkTools:" +
             Versions.androidnetworktools
 
+    /**
+     * https://square.github.io/okhttp/
+     */
+    const val logging_interceptor: String = "com.squareup.okhttp3:logging-interceptor:" +
+            Versions.logging_interceptor
+
     const val firebase_analytics: String = "com.google.firebase:firebase-analytics:" +
             Versions.firebase_analytics
 
     const val firebase_messaging: String = "com.google.firebase:firebase-messaging:" +
             Versions.firebase_messaging
 
-    const val firebase_ml_vision: String = "com.google.firebase:firebase-ml-vision:" +
-            Versions.firebase_ml_vision
+    /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
+    const val paging_runtime_ktx: String = "androidx.paging:paging-runtime-ktx:" +
+            Versions.paging_runtime_ktx
+
+    /**
+     * http://developer.android.com/tools/extras/support-library.html
+     */
+    const val swiperefreshlayout: String = "androidx.swiperefreshlayout:swiperefreshlayout:" +
+            Versions.swiperefreshlayout
 
     /**
      * http://developer.android.com/tools/extras/support-library.html
@@ -204,12 +227,6 @@ object Libs {
     const val constraintlayout: String = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintlayout
 
-    /**
-     * https://github.com/square/retrofit/
-     */
-    const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
-            Versions.converter_moshi
-
     const val google_services: String = "com.google.gms:google-services:" + Versions.google_services
 
     /**
@@ -219,6 +236,11 @@ object Libs {
             Versions.espresso_core
 
     const val firebase_auth: String = "com.google.firebase:firebase-auth:" + Versions.firebase_auth
+
+    /**
+     * https://developer.android.com/jetpack/androidx
+     */
+    const val recyclerview: String = "androidx.recyclerview:recyclerview:" + Versions.recyclerview
 
     /**
      * https://developer.android.com/studio
@@ -239,11 +261,6 @@ object Libs {
      * http://developer.android.com/tools/extras/support-library.html
      */
     const val material: String = "com.google.android.material:material:" + Versions.material
-
-    /**
-     * https://github.com/square/retrofit/
-     */
-    const val retrofit: String = "com.squareup.retrofit2:retrofit:" + Versions.retrofit
 
     /**
      * https://github.com/facebook/fresco

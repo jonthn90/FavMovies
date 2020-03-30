@@ -47,14 +47,26 @@ dependencies {
     implementation(Libs.kotlin_stdlib_jdk7)
     implementation(Libs.appcompat)
     implementation(Libs.core_ktx)
+    implementation (Libs.recyclerview)
     implementation(Libs.constraintlayout)
+    implementation (Libs.swiperefreshlayout)
 
     implementation(Libs.material)
+
+    implementation(Libs.lifecycle_viewmodel_ktx)
+    implementation(Libs.lifecycle_livedata_ktx)
+    kapt(Libs.lifecycle_compiler)
 
     implementation(Libs.navigation_fragment_ktx)
     implementation(Libs.navigation_ui_ktx)
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation(Libs.paging_runtime_ktx)
+
+    implementation(Libs.room_runtime)
+    implementation(Libs.room_ktx)
+    kapt(Libs.room_compiler)
+
+    implementation(Libs.legacy_support_v4)
     testImplementation(Libs.junit_junit)
     androidTestImplementation(Libs.androidx_test_ext_junit)
     androidTestImplementation(Libs.espresso_core)
@@ -67,14 +79,7 @@ dependencies {
     implementation(Libs.firebase_storage_ktx)
     implementation(Libs.firebase_crashlytics)
 
-    implementation(Libs.firebase_ml_vision)
-    implementation(Libs.firebase_ml_vision_barcode_model)
-
     implementation(Libs.google_services)
-
-    implementation(Libs.lifecycle_viewmodel_ktx)
-    implementation(Libs.lifecycle_livedata_ktx)
-    kapt(Libs.lifecycle_compiler)
 
     implementation(Libs.navigation_fragment_ktx)
     implementation(Libs.navigation_ui_ktx)
@@ -98,12 +103,7 @@ dependencies {
 
     implementation(Libs.retrofit)
     implementation(Libs.converter_moshi)
-    implementation "com.squareup.okhttp3:logging-interceptor:4.4.1"
-
-
-    implementation(Libs.room_runtime)
-    implementation(Libs.room_ktx)
-    kapt(Libs.room_compiler)
+    implementation(Libs.logging_interceptor)
 
     implementation(Libs.androidnetworktools)
 }

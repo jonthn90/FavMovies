@@ -1,21 +1,45 @@
 package xyz.jonthn.favmovies.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.TimeoutCancellationException
+import androidx.paging.DataSource
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import xyz.jonthn.favmovies.model.data.Movie
+import xyz.jonthn.favmovies.model.paging.MoviesDataSource
 import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 
-class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewModel() {
+class MoviesViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-    fun getMoviesWS(){
+    var moviesLiveData: LiveData<PagedList<Movie>>
 
-        viewModelScope.launch{
+    init {
+        val config = PagedList.Config.Builder()
+            .setPageSize(30)
+            .setEnablePlaceholders(false)
+            .build()
+        moviesLiveData = initializedPagedListBuilder(config).build()
+    }
 
-            val moviesWS = moviesRepository.getMoviesWS()
+    fun getMovies(): LiveData<PagedList<Movie>> = moviesLiveData
 
-            Timber.d("+++ Movies = $moviesWS")
+    private fun initializedPagedListBuilder(config: PagedList.Config): LivePagedListBuilder<Int, Movie> {
+
+        val dataSourceFactory = object : DataSource.Factory<Int, Movie>() {
+            override fun create(): DataSource<Int, Movie> {
+                return MoviesDataSource(viewModelScope)
+            }
+        }
+        return LivePagedListBuilder(dataSourceFactory, config)
+    }
+
+    fun getMoviesWS() {
+        viewModelScope.launch {
+            Timber.d("+++ Movies 1 = ${moviesRepository.getMoviesWS(1)}")
+            Timber.d("+++ Movies 2 = ${moviesRepository.getMoviesWS(2)}")
         }
     }
 }

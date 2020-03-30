@@ -10,7 +10,10 @@ import xyz.jonthn.favmovies.viewmodel.ViewModelFactory
 
 val moviesModule = module {
     single { NetworkConnectionInterceptor(FavMoviesApp.appContext!!) }
-    single<MoviesRepository> { MoviesRepostoryImpl(Retrofit.instanceMovies(get())) }
+
+    single { Retrofit.instanceMovies(get()) }
+
+    single<MoviesRepository> { MoviesRepostoryImpl(get()) }
 }
 
 val viewModelsModule = module {
