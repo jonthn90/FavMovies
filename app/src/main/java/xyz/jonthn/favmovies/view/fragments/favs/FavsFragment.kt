@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -32,7 +31,7 @@ class FavsFragment : Fragment() {
 
     private val favsAdapter by lazy {
         FavsAdapter({
-            mainViewModel.deleteFavMovieInv(it)
+            mainViewModel.deleteFavMovie(it, true)
         }, {
             findNavController().navigate(
                 R.id.action_favsFragment_to_movieFragment2,

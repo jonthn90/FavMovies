@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder
-import kotlinx.android.synthetic.main.item_movie.view.*
 import xyz.jonthn.favmovies.FavMoviesApp
 import xyz.jonthn.favmovies.R
 import xyz.jonthn.favmovies.databinding.ItemMovieBinding

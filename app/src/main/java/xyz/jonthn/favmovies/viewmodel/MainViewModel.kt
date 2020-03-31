@@ -44,22 +44,15 @@ class MainViewModel(val moviesRepository: MoviesRepository) : ViewModel() {
         }
     }
 
-    fun deleteFavMovie(movie: Movie) {
+    fun deleteFavMovie(movie: Movie, invalidate: Boolean = false) {
         viewModelScope.launch {
             movie.isFav = false
             moviesRepository.deleteFavMovie(movie.id)
-            //invalidateDataSource()
-        }
-    }
 
-    fun deleteFavMovieInv(movie: Movie) {
-        viewModelScope.launch {
-            movie.isFav = false
-            moviesRepository.deleteFavMovie(movie.id)
-            invalidateDataSource()
+            if (invalidate)
+                invalidateDataSource()
         }
     }
 
     fun getFavMovies(): LiveData<List<Movie>> = favMoviesLiveData
-
 }
