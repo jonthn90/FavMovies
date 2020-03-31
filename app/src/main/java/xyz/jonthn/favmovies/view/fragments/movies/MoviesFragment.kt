@@ -36,11 +36,11 @@ class MoviesFragment : Fragment() {
     private val mainViewModel: MainViewModel by sharedViewModel()
 
     private val moviesAdapter by lazy {
-        MoviesAdapter ({ movie, position ->
+        MoviesAdapter({ movie, position ->
             Timber.d("+++ Movie Click: ${movie.title}")
 
             if (movie.isFav) {
-                mainViewModel.deleteFavMovie(movie.id)
+                mainViewModel.deleteFavMovie(movie)
             } else {
                 mainViewModel.insertMovie(movie)
             }
@@ -75,14 +75,14 @@ class MoviesFragment : Fragment() {
         })
     }
 
-    fun updateAdapter(positon: Int){
+    fun updateAdapter(positon: Int) {
         moviesAdapter.notifyItemChanged(positon)
     }
 
     private fun initializeList() {
         binding.recyclerMovies.apply {
             adapter = moviesAdapter
-            layoutManager = GridLayoutManager(requireContext(),2)
+            layoutManager = GridLayoutManager(requireContext(), 2)
         }
     }
 

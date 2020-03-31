@@ -14,7 +14,7 @@ import xyz.jonthn.favmovies.databinding.ItemMovieBinding
 import xyz.jonthn.favmovies.model.data.Movie
 
 class FavsAdapter(
-    private val favListener: (Int) -> Unit,
+    private val favListener: (Movie) -> Unit,
     private val detailListener: (Movie) -> Unit
 ) :
     RecyclerView.Adapter<FavsAdapter.ViewHolder>() {
@@ -34,12 +34,12 @@ class FavsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(moviesList.currentList.get(position), favListener, detailListener)
+        holder.bind(moviesList.currentList[position], favListener, detailListener)
     }
 
     class ViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie, favListener: (Int) -> Unit, detailListener: (Movie) -> Unit) {
+        fun bind(movie: Movie, favListener: (Movie) -> Unit, detailListener: (Movie) -> Unit) {
 
             binding.textMovieTitle.text = movie.title
             val uri = Uri.parse("https://image.tmdb.org/t/p/w500/${movie.poster_path}")
@@ -52,7 +52,7 @@ class FavsAdapter(
             binding.imageFavIcon.hierarchy = hierarchy
 
             binding.imageFavIcon.setOnClickListener {
-                favListener(movie.id)
+                favListener(movie)
             }
 
             binding.imagePoster.setOnClickListener {

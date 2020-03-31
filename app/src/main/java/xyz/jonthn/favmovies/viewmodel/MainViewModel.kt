@@ -34,10 +34,9 @@ class MainViewModel (val moviesRepository: MoviesRepository): ViewModel() {
     fun insertMovie(movie: Movie) {
         viewModelScope.launch {
 
-            var movieFav = movie
-            movieFav.isFav = true
+            movie.isFav = true
 
-            moviesRepository.insertFavMovie(movieFav)
+            moviesRepository.insertFavMovie(movie)
 
             val favMovies = moviesRepository.getFavMovies()
 
@@ -45,10 +44,12 @@ class MainViewModel (val moviesRepository: MoviesRepository): ViewModel() {
         }
     }
 
-    fun deleteFavMovie(id: Int) {
+    fun deleteFavMovie(movie: Movie) {
         viewModelScope.launch {
-            moviesRepository.deleteFavMovie(id)
-            invalidateDataSource()
+
+            movie.isFav = false
+            moviesRepository.deleteFavMovie(movie.id)
+            //invalidateDataSource()
         }
     }
 
