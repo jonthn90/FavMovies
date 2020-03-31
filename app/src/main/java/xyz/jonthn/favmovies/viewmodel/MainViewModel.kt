@@ -12,7 +12,7 @@ import xyz.jonthn.favmovies.model.data.Movie
 import xyz.jonthn.favmovies.model.paging.MoviesDataSourceFactory
 import xyz.jonthn.favmovies.model.repositories.MoviesRepository
 
-class MainViewModel (val moviesRepository: MoviesRepository): ViewModel() {
+class MainViewModel(val moviesRepository: MoviesRepository) : ViewModel() {
 
     private val dataSourceFactory = MoviesDataSourceFactory(viewModelScope, moviesRepository)
 
@@ -46,10 +46,17 @@ class MainViewModel (val moviesRepository: MoviesRepository): ViewModel() {
 
     fun deleteFavMovie(movie: Movie) {
         viewModelScope.launch {
-
             movie.isFav = false
             moviesRepository.deleteFavMovie(movie.id)
             //invalidateDataSource()
+        }
+    }
+
+    fun deleteFavMovieInv(movie: Movie) {
+        viewModelScope.launch {
+            movie.isFav = false
+            moviesRepository.deleteFavMovie(movie.id)
+            invalidateDataSource()
         }
     }
 

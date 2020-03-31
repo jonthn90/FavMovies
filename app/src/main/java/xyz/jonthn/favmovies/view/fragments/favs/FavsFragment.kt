@@ -32,7 +32,7 @@ class FavsFragment : Fragment() {
 
     private val favsAdapter by lazy {
         FavsAdapter({
-            mainViewModel.deleteFavMovie(it)
+            mainViewModel.deleteFavMovieInv(it)
         }, {
             findNavController().navigate(
                 R.id.action_favsFragment_to_movieFragment2,
