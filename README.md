@@ -1,4 +1,4 @@
-# FavMovies
+# FavMovies a Coding Example
 
 
 - API https://developers.themoviedb.org/3/movies/get-top-rated-movies
