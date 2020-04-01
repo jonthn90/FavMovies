@@ -6,7 +6,7 @@
 - Home Screen: 
 - The main screen of the app, consists of a screen with two tabs at
 the bottom of the screen:
--First Tab: 
+- First Tab: 
 - This tab is called “Movies” it shows a grid view with an infinite
 pagination of the movies, ordered by rate (top rated movies at the beginning), each movie should have a favorite icon that can be clicked to add the movie to favourites or remove it.
 - Second Tab: 
