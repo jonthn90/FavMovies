@@ -19,10 +19,5 @@ pagination of the movies, ordered by rate (top rated movies at the beginning), e
 - Use Retrofit with Kotlin coroutines for API calls 
 - Use ROOM to store local data 
 - Use single activity architecture 
-- Use the navigation component from architecture components 
-- The app must not crash when you do one of the following:
-- Screen rotation
-- Send app to background and restore.
-- You use split screen on your phone.
-- Follow the SOLID principles
+- Use the navigation component from architecture components
 
