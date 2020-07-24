@@ -17,7 +17,7 @@ object Versions {
 
     const val com_squareup_retrofit2: String = "2.8.1"
 
-    const val androidx_databinding: String = "3.6.1"
+    const val androidx_databinding: String = "3.6.2"
 
     const val org_jetbrains_kotlin: String = "1.3.71"
 
@@ -29,7 +29,7 @@ object Versions {
 
     const val org_koin: String = "2.1.5"
 
-    const val com_android_tools_build_gradle: String = "3.6.1"
+    const val com_android_tools_build_gradle: String = "3.6.2" // available: "3.6.2"
 
     const val androidx_test_ext_junit: String = "1.1.1"
 
@@ -39,7 +39,7 @@ object Versions {
 
     const val firebase_crashlytics_gradle: String = "2.0.0-beta03"
 
-    const val firebase_firestore_ktx: String = "21.4.1"
+    const val firebase_firestore_ktx: String = "21.4.2" // available: "21.4.2"
 
     const val firebase_functions_ktx: String = "19.0.2"
 
@@ -49,11 +49,11 @@ object Versions {
 
     const val androidnetworktools: String = "0.4.5.2"
 
-    const val logging_interceptor: String = "4.4.1"
+    const val logging_interceptor: String = "4.4.1" // available: "4.5.0"
 
-    const val firebase_analytics: String = "17.2.3"
+    const val firebase_analytics: String = "17.2.3" // available: "17.3.0"
 
-    const val firebase_messaging: String = "20.1.3"
+    const val firebase_messaging: String = "20.1.3" // available: "20.1.5"
 
     const val paging_runtime_ktx: String = "2.1.2"
 
@@ -71,7 +71,7 @@ object Versions {
 
     const val recyclerview: String = "1.1.0"
 
-    const val lint_gradle: String = "26.6.1"
+    const val lint_gradle: String = "26.6.1" // available: "26.6.2"
 
     const val appcompat: String = "1.1.0"
 
@@ -85,7 +85,7 @@ object Versions {
 
     const val timber: String = "4.7.1"
 
-    const val aapt2: String = "3.6.1-6040484"
+    const val aapt2: String = "3.6.1-6040484" // available: "3.6.2-6040484"
 
     /**
      * Current version: "5.6.4"

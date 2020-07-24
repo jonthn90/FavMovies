@@ -33,5 +33,4 @@ class NetworkConnectionInterceptor(
         }
         return result
     }
-
 }

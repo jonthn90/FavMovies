@@ -57,6 +57,7 @@ dependencies {
     implementation(Libs.lifecycle_viewmodel_ktx)
     implementation(Libs.lifecycle_livedata_ktx)
     implementation (Libs.legacy_support_v4)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Libs.lifecycle_compiler)
 
     implementation(Libs.navigation_fragment_ktx)

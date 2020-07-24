@@ -31,7 +31,7 @@ class MainViewModel(val moviesRepository: MoviesRepository) : ViewModel() {
 
     fun getMovies(): LiveData<PagedList<Movie>> = moviesLiveData
 
-    fun insertMovie(movie: Movie) {
+    fun insertMovie(movie: Movie, invalidate: Boolean = false) {
         viewModelScope.launch {
 
             movie.isFav = true
@@ -41,6 +41,9 @@ class MainViewModel(val moviesRepository: MoviesRepository) : ViewModel() {
             val favMovies = moviesRepository.getFavMovies()
 
             Timber.d("+++ FavMovies[${favMovies.size}] ${favMovies}")
+
+            if (invalidate)
+                invalidateDataSource()
         }
     }
 
